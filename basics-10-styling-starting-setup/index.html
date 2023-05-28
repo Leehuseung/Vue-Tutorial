@@ -28,7 +28,11 @@
       @click="boxSelected('A')">
   </div>
   <div class="demo" :class="{active: boxBSelected}" @click="boxSelected('B')"></div>
-  <div class="demo" :class="{active: boxCSelected}" @click="boxSelected('C')"></div>
+
+<!--    배열을 이용해 class를 동적으로 줄 수도 있다.-->
+  <div
+       :class="['demo', {active: boxCSelected}]"
+       @click="boxSelected('C')"></div>
 </section>
 </body>
 </html>
