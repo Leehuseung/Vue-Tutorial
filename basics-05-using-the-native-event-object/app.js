@@ -2,8 +2,31 @@ const app = Vue.createApp({
   data() {
     return {
       counter: 0,
-      name: ''
+      name: '',
+      lastName: '',
+      // fullname: '',
     };
+  },
+  watch: {
+    counter(value) {
+      if(value > 50) {
+        this.counter = 0;
+      }
+    }
+  //   name(value) {
+  //     if(value == ''){
+  //       this.fullname = ''
+  //     } else {
+  //       this.fullname = value + ' ' + this.lastName;
+  //     }
+  //   },
+  //   lastName(value) {
+  //     if(value == ''){
+  //       this.fullname = ''
+  //     } else {
+  //       this.fullname = this.name + ' ' + value;
+  //     }
+  //   }
   },
   computed: {
     //함수처럼 사용하지 않고 변수처럼 사용한다.
@@ -11,10 +34,10 @@ const app = Vue.createApp({
       //computed 프로퍼티를 사용하면 counter에대한 이벤트 조작 사용시 재랜더링 하지 않는다.
       //name 이 변경된 경우에만 다시 계산한다.
       console.log('Running again...');
-      if (this.name === '') {
+      if (this.name === '' || this.lastName === '') {
         return '';
       }
-      return this.name + ' ' + 'abcdef';
+      return this.name + ' ' + this.lastName;
     }
   },
   methods: {
