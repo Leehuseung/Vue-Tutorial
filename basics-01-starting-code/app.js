@@ -1,7 +1,8 @@
 const app = Vue.createApp({
     data() {
         return {
-            courseGoal: 'Finish the course are learn Vue!',
+            courseGoalA: 'Finish the course are learn Vue!',
+            courseGoalB: '<h2>Master Vue and build</h2>',
             vueLink: 'https://vuejs.org/' // v-bind 를 이용해  html "" 안에 변수를 사용할 수 있다
         }
     },
@@ -9,9 +10,9 @@ const app = Vue.createApp({
         outputGoal() {
             const randomNumber = Math.random();
             if (randomNumber < 0.5){
-                return 'Learn Vue!';
+                return this.courseGoalA;
             } else {
-                return 'Master Vue!'
+                return this.courseGoalB;
             }
         }
     }
