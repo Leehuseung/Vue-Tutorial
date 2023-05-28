@@ -22,11 +22,29 @@
 <!--      <button v-on:click="add">Add 5</button>-->
       <button v-on:click="add(10)">Add 10</button>
       <button v-on:click="reduce(5)">Reduce 5</button>
-      <p>Result: {{ counter }}</p>
-<!--      <input type="text" v-on:input="setName">-->
 
-      <input type="text" v-on:input="setName2($event, 'Sched')">
-        <p>Your name: {{ name }}</p>
+<!--        right 클릭만 가능하게 할 수 있다.-->
+<!--      <button v-on:click.right="reduce(5)">Reduce 5</button>-->
+
+      <p>Result: {{ counter }}</p>
+
+<!--      <input type="text" v-on:input="setName">-->
+<!--      <input type="text" v-on:input="setName2($event, 'Sched')">-->
+
+<!--        keyup.enter 를 이용해 enter 키만 에빈트를 적용할 수 있다.-->
+      <input type="text" v-on:input="setName2($event, 'Sched')" v-on:keyup.enter="confirmInput">
+        <p>Your name: {{ confirmedName }}</p>
+
+
+<!--        <p>Your name: {{ name }}</p>-->
+<!--        <form v-on:submit="submitForm">-->
+
+<!--        submit에 .prevent 추가시 js의 event.preventDefault 제거 가능-->
+        <form v-on:submit.prevent="submitForm">
+            <input type="text">
+<!--            form 안에있는 button은 새로고침을 만든다.-->
+            <button>Sign up</button>
+        </form>
     </section>
   </body>
 </html>
