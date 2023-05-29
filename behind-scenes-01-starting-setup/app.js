@@ -10,7 +10,11 @@ const app = Vue.createApp({
       this.currentUserInput = event.target.value;
     },
     setText() {
-      this.message = this.currentUserInput;
+      // this.message = this.currentUserInput;
+      // this.message = this.$refs.userText;
+      // console.log(this.$refs.userText); // js dom이 찍힌다.
+      // console.dir(this.$refs.userText); // js dom이 찍힌다.
+      this.message = this.$refs.userText.value;
     },
   },
 });
