@@ -31,8 +31,11 @@
             <li
                     v-for="(goal, idx) in goals"
                     @click="removeGoal(index)"
+                    :key="goal"
             >
-                {{goal}} - {{idx}}</li>
+                <p>{{goal}} - {{idx}}</p>
+                <input type="text" @click.stop>
+            </li>
         </ul>
 
 <!--        숫자를 순회-->
