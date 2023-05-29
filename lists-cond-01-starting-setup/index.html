@@ -20,14 +20,22 @@
       <h2>My course goals</h2>
       <input type="text" v-model="enteredGoalValue"/>
       <button @click="addGoal">Add Goal</button>
-      <p v-if="goals.length === 0">No goals have been added yet - please start adding some!</p>
+<!--        v-if-->
+<!--      <p v-if="goals.length === 0">No goals have been added yet - please start adding some!</p>-->
 <!--      v-if가 있는곳에 써야한다.-->
 <!--        <ul v-else-if="goals.lengh > 0">-->
 <!--            <li>Goal</li>-->
 <!--        </ul>-->
-      <ul v-else>
-        <li>Goal</li>
+<!--        <ul v-else>-->
+<!--            <li>Goal</li>-->
+<!--        </ul>-->
+
+<!--        v-show를 사용하면 dom이 실제로 사라지지는 않고 display로 보여주고 사라지고 한다.-->
+      <p v-show="goals.length === 0">No goals have been added yet - please start adding some!</p>
+      <ul v-show="goals.length > 0">
+          <li>Goal</li>
       </ul>
+
     </section>
   </body>
 </html>
