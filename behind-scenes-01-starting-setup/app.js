@@ -17,6 +17,17 @@ const app = Vue.createApp({
 
 app.mount('#app');
 
+//앱은 독립적으로 움직인다. app1에서 선언한 변수를 사용할 수 없음.
+const app2 = Vue.createApp({
+  data() {
+    return {
+      favoriteMeal: 'pizza',
+    }
+  }
+});
+app2.mount('#app2');
+
+
 //. .....
 
 const data = {
