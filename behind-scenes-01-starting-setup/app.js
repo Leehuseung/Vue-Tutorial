@@ -17,9 +17,35 @@ const app = Vue.createApp({
       this.message = this.$refs.userText.value;
     },
   },
+  beforeCreate() {
+    console.log('beforeCreate()');  // 화면에 Vue 관련 값이 아무것도 떠있지 않다.
+  },
+  created() {
+    console.log('created()');  // 화면에 아무것도 떠있지 않다.
+  },
+  beforeMount() {
+    console.log('beforeMount()');
+  },
+  mounted() {
+    console.log('mounted()');
+  },
+  beforeUpdate() {
+    console.log('beforeUpdate()');  // 실제로 update된 값이 출력되지 않는다.
+  },
+  updated() {
+    console.log('updated()');   // 실제 출력됨.
+  },
+  beforeUnmount() {
+    console.log('beforeUnmount()');   //실제로 내용이 사라지지 않는다.
+  },
+  unmounted() {
+    console.log('unmounted()');  //앱 종료.
+  },
 });
 
 app.mount('#app');
+
+// app.unmount();  //실제로 unmount 할일은 별로 없다.
 
 //앱은 독립적으로 움직인다. app1에서 선언한 변수를 사용할 수 없음.
 const app2 = Vue.createApp({
@@ -64,7 +90,7 @@ const proxy = new Proxy(data, handler);
  */
 proxy.message = 'Hello!!!!';  //
 
-console.log(proxy.longMessage); // Hello!!!! World!
+// console.log(proxy.longMessage); // Hello!!!! World!
 
 
 
