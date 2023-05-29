@@ -27,8 +27,19 @@
 <!--            <li>Goal</li>-->
 <!--        </ul>-->
         <ul v-else>
-            <li v-for="goal in goals">{{goal}}</li>
+<!--            <li v-for="goal in goals">{{goal}}</li>-->
+            <li v-for="(goal, idx) in goals">{{goal}} - {{idx}}</li>
         </ul>
+
+<!--        숫자를 순회-->
+<!--        <ul>-->
+<!--            <li v-for="num in 10">{{num}}</li>-->
+<!--        </ul>-->
+
+        <!--            객체 키 순회하기 -->
+<!--        <ul>-->
+<!--            <li v-for="(value, key, index) in {name :'MAX', age: 31}">{{key}} : {{value}} - {{index}}</li>-->
+<!--        </ul>-->
 
 <!--        v-show를 사용하면 dom이 실제로 사라지지는 않고 display로 보여주고 사라지고 한다.-->
 <!--      <p v-show="goals.length === 0">No goals have been added yet - please start adding some!</p>-->
