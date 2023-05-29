@@ -28,7 +28,11 @@
 <!--        </ul>-->
         <ul v-else>
 <!--            <li v-for="goal in goals">{{goal}}</li>-->
-            <li v-for="(goal, idx) in goals">{{goal}} - {{idx}}</li>
+            <li
+                    v-for="(goal, idx) in goals"
+                    @click="removeGoal(index)"
+            >
+                {{goal}} - {{idx}}</li>
         </ul>
 
 <!--        숫자를 순회-->
