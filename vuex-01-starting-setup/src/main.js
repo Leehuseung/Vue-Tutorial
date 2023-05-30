@@ -3,11 +3,12 @@ import { createStore } from 'vuex';
 
 import App from './App.vue';
 
-const store = createStore({
+//카운터 관련 로직을 하나의 모듈로 이동하였다.
+//모듈을 이용한 확장
+const counterModule = {
     state() {
         return {
-            counter: 0,
-            isLoggedIn: false,
+          counter: 0,
         };
     },
     mutations: {
@@ -26,9 +27,18 @@ const store = createStore({
         increase(state, payload) {
             state.counter = state.counter + payload.value;
         },
-        setAuth(state, payload) {
-            state.isLoggedIn = payload.isAuth;
-        }
+    },
+    actions: {
+        //mutation 과 같은 이름을 쓰면 직관적이다.
+        increment(context) {
+            setTimeout( function() {
+                //mutation을 실행한다.
+                context.commit('increment');
+            },2000);
+        },
+        increase(context, payload) {
+            context.commit('increase', payload);
+        },
     },
     getters: {
         //여기서만 바꾸면 된다.
@@ -42,28 +52,38 @@ const store = createStore({
             if(finalCounter > 100)return 100;
             return finalCounter;
         },
-        userIsAuthenticated(state){
-            return state.isLoggedIn;
+    }
+};
+
+const store = createStore({
+    modules: {
+        numbers: counterModule,
+    },
+    state() {
+        return {
+            counter: 0,
+            isLoggedIn: false,
+        };
+    },
+    mutations: {
+        setAuth(state, payload) {
+            state.isLoggedIn = payload.isAuth;
         }
-     },
+    },
     actions: {
-        //mutation 과 같은 이름을 쓰면 직관적이다.
-        increment(context) {
-            setTimeout( function() {
-                //mutation을 실행한다.
-                context.commit('increment');
-            },2000);
-        },
-        increase(context, payload) {
-            context.commit('increase', payload);
-        },
         login(context) {
             context.commit('setAuth', {isAuth: true});
         },
         logout(context) {
             context.commit('setAuth', {isAuth: false});
         }
-    }
+    },
+    getters: {
+        userIsAuthenticated(state){
+            return state.isLoggedIn;
+        }
+     },
+
 });
 
 const app = createApp(App);
