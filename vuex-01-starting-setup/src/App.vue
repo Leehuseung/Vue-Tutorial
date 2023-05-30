@@ -29,10 +29,16 @@ export default {
   },
   methods: {
     addOne(){
-      //첫번째 방법
+      // mutation 사용 첫번째 방법
       // this.$store.commit('increase', { value : 10);
-      //두번째 방법
-      this.$store.commit({
+      //  mutation 사용 두번째 방법
+      // this.$store.commit({
+      //   type: 'increase',
+      //   value: 10,
+      // })
+
+      //actions 사용. commit과 비슷하다. 두번째 인자로 객체등 가능
+      this.$store.dispatch({
         type: 'increase',
         value: 10,
       })

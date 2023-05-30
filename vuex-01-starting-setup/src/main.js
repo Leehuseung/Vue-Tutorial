@@ -14,6 +14,12 @@ const store = createStore({
         //중복제거, 실수제거 등 가능.
         increment(state) {
             state.counter += 2;
+
+            //setTimeout을 그대로 쓰는건 좋은게 아니다. actions를 고려하자.
+            // setTimeout( function() {
+            //     state.counter += 2;
+            // },2000);
+
         },
         //payload는 객체, 숫자 ,, 종류는 상관없다.
         increase(state, payload) {
@@ -32,7 +38,19 @@ const store = createStore({
             if(finalCounter > 100)return 100;
             return finalCounter;
         }
-     }
+     },
+    actions: {
+        //mutation 과 같은 이름을 쓰면 직관적이다.
+        increment(context) {
+            setTimeout( function() {
+                //mutation을 실행한다.
+                context.commit('increment');
+            },2000);
+        },
+        increase(context, payload) {
+            context.commit('increase', payload);
+        }
+    }
 });
 
 const app = createApp(App);
