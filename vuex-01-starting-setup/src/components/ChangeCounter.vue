@@ -16,12 +16,12 @@ export  default  {
     // }
 
     //actions를 한번에 선언한다. 위에처럼 addOne이 필요 없다.
-    ...mapActions(['increment', 'increase'])
+    // ...mapActions(['increment', 'increase'])
 
-    // ...mapActions({
-    //     inc: 'increment',  //매핑되어야하는 키를 넣어준다.
-    //     increase: 'increase' //
-    //   })
+    ...mapActions('numbers', {
+        inc: 'increment',  //매핑되어야하는 키를 넣어준다.
+        increase: 'increase' //
+      })
     //<button @click="inc">Add 2</button>  이렇게 사용한다.
   }
 }

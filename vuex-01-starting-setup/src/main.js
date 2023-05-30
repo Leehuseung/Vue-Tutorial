@@ -11,6 +11,9 @@ import App from './App.vue';
 //카운터 관련 로직을 하나의 모듈로 이동하였다.
 //모듈을 이용한 확장
 const counterModule = {
+    //네임스페이스 설정을 하면 모듈 전체가 저장소로부터 분리되야 한다는걸 vuex에 알린다.
+    //modules에서 numbers: counterModule로 선언했으므로 numbers가 네임스페이스이다.
+    namespaced: true,
     state() {
         return {
           counter: 0,
@@ -34,6 +37,10 @@ const counterModule = {
             console.log(state);
             state.counter = state.counter + payload.value;
         },
+        //login 이 잇다면 main의 login action 과 충돌할 것이다.
+        login() {
+
+        }
     },
     actions: {
         //mutation 과 같은 이름을 쓰면 직관적이다.

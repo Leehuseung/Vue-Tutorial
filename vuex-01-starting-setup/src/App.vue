@@ -49,7 +49,7 @@ export default {
 
       //actions 사용. commit과 비슷하다. 두번째 인자로 객체등 가능
       this.$store.dispatch({
-        type: 'increase',
+        type: 'numbers/increase',
         value: 10,
       })
     }

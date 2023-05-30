@@ -7,7 +7,10 @@
 export default {
   computed: {
     counter() {
-      return this.$store.getters.nomalizedCounter;
+      // return this.$store.getters.nomalizedCounter;
+
+      //네임스페이스 적용
+      return this.$store.getters['numbers/nomalizedCounter'];
     }
   },
 }
