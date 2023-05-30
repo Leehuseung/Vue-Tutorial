@@ -6,7 +6,8 @@ import App from './App.vue';
 const store = createStore({
     state() {
         return {
-            counter: 0
+            counter: 0,
+            isLoggedIn: false,
         };
     },
     mutations: {
@@ -24,6 +25,9 @@ const store = createStore({
         //payload는 객체, 숫자 ,, 종류는 상관없다.
         increase(state, payload) {
             state.counter = state.counter + payload.value;
+        },
+        setAuth(state, payload) {
+            state.isLoggedIn = payload.isAuth;
         }
     },
     getters: {
@@ -37,6 +41,9 @@ const store = createStore({
             if(finalCounter < 0) return 0;
             if(finalCounter > 100)return 100;
             return finalCounter;
+        },
+        userIsAuthenticated(state){
+            return state.isLoggedIn;
         }
      },
     actions: {
@@ -49,6 +56,12 @@ const store = createStore({
         },
         increase(context, payload) {
             context.commit('increase', payload);
+        },
+        login(context) {
+            context.commit('setAuth', {isAuth: true});
+        },
+        logout(context) {
+            context.commit('setAuth', {isAuth: false});
         }
     }
 });
