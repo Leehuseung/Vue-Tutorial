@@ -14,6 +14,10 @@ const store = createStore({
         //중복제거, 실수제거 등 가능.
         increment(state) {
             state.counter += 1;
+        },
+        //payload는 객체, 숫자 ,, 종류는 상관없다.
+        increase(state, payload) {
+            state.counter = state.counter + payload.value;
         }
     }
 });

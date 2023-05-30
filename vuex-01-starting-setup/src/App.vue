@@ -27,7 +27,13 @@ export default {
   },
   methods: {
     addOne(){
-      this.$store.commit('increment');
+      //첫번째 방법
+      // this.$store.commit('increase', { value : 10);
+      //두번째 방법
+      this.$store.commit({
+        type: 'increase',
+        value: 10,
+      })
     }
   }
 };
