@@ -3,6 +3,11 @@ import { createStore } from 'vuex';
 
 import App from './App.vue';
 
+/**
+ * 모듈의 상태는 모듈 내에서만 관리한다.
+ * Auth의 상태를 가져올 수 없다.
+ * @type {any}
+ */
 //카운터 관련 로직을 하나의 모듈로 이동하였다.
 //모듈을 이용한 확장
 const counterModule = {
@@ -16,7 +21,6 @@ const counterModule = {
         //중복제거, 실수제거 등 가능.
         increment(state) {
             state.counter += 2;
-
             //setTimeout을 그대로 쓰는건 좋은게 아니다. actions를 고려하자.
             // setTimeout( function() {
             //     state.counter += 2;
@@ -25,6 +29,9 @@ const counterModule = {
         },
         //payload는 객체, 숫자 ,, 종류는 상관없다.
         increase(state, payload) {
+            //모듈 내의 상태는 모듈 내의 지역상태로 치부된다.
+
+            console.log(state);
             state.counter = state.counter + payload.value;
         },
     },
@@ -41,6 +48,13 @@ const counterModule = {
         },
     },
     getters: {
+        testAuth(state, getters, rootState, rootGetters) {
+            console.log(getters)
+            //root를 이용해 외부모듈에 접근할 수 있다.
+            console.log(rootState)
+            console.log(rootGetters)
+            return state.isLoggedIn;
+        },
         //여기서만 바꾸면 된다.
         finalCounter(state) {
             return state.counter * 2;
