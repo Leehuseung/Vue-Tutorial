@@ -18,12 +18,34 @@
 
 <script>
 export default {
-  props: [
-      'name',
-      'phoneNumber',
-      'emailAddress',
-      'isFavorite'
-  ],
+  // props: [
+  //     'name',
+  //     'phoneNumber',
+  //     'emailAddress',
+  //     'isFavorite'
+  // ],
+  props: {
+    name: {
+      type: String,
+      required: true, // name 을 요구하는지 표현 오류는 발생 안하지만 콘솔창에 경고 나옴.
+    },
+    phoneNumber: {
+      type: String,
+      required: true
+    },
+    emailAddress: {
+      type: String,
+      required: true,
+    },
+    isFavorite: {
+      type: String,
+      required: false,
+      default: '0',
+      validator: function(value) {
+        return value === '1' || value === '0';
+      }
+    }
+  },
   data() {
     return {
       detailsAreVisible: false,
