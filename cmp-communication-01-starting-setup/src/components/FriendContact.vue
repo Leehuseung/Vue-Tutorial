@@ -1,6 +1,9 @@
 <template>
   <li>
-    <h2>{{ name }} {{friendIsFavorite ? '(Favorite)' : ''}}</h2>
+    <h2>{{ name }} {{isFavorite ? '(Favorite)' : ''}}</h2>
+
+<!--    자식 컴포넌트로 props를 이용할 때-->
+<!--    <h2>{{ name }} {{friendIsFavorite ? '(Favorite)' : ''}}</h2>-->
     <button @click="toggleFavorite">Toggle Favorite</button>
     <button @click="toggleDetails">{{ detailsAreVisible ? 'Hide' : 'Show' }} Details</button>
     <ul v-if="detailsAreVisible">
@@ -25,6 +28,10 @@ export default {
   //     'isFavorite'
   // ],
   props: {
+    id: {
+      type:String,
+      require: true
+    },
     name: {
       type: String,
       required: true, // name 을 요구하는지 표현 오류는 발생 안하지만 콘솔창에 경고 나옴.
@@ -55,7 +62,7 @@ export default {
       //   phone: "0123 45678 90",
       //   email: "manuel@localhost.com",
       // },
-      friendIsFavorite: this.isFavorite,  // 부모에서온 isFavorite을 사용하려면 초기값을 이용한다.
+      // friendIsFavorite: this.isFavorite,  // 부모에서온 isFavorite을 사용하려면 초기값을 이용한다.
     };
   },
   methods: {
@@ -86,7 +93,9 @@ export default {
       /**
        * boolean으로 변경되면서..
        */
-      this.friendIsFavorite = !this.friendIsFavorite;
+      // this.friendIsFavorite = !this.friendIsFavorite;
+
+      this.$emit('toggle-favorite', this.id);
     }
   }
 };
