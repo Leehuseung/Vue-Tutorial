@@ -38,23 +38,23 @@ export default {
       required: true,
     },
     isFavorite: {
-      type: String,
+      type: Boolean,
       required: false,
-      default: '0',
-      validator: function(value) {
-        return value === '1' || value === '0';
-      }
+      default: false,
+      // validator: function(value) {
+      //   return value === '1' || value === '0';
+      // }
     }
   },
   data() {
     return {
       detailsAreVisible: false,
-      friend: {
-        id: "manuel",
-        name: "Manuel Lorenz",
-        phone: "0123 45678 90",
-        email: "manuel@localhost.com",
-      },
+      // friend: {
+      //   id: "manuel",
+      //   name: "Manuel Lorenz",
+      //   phone: "0123 45678 90",
+      //   email: "manuel@localhost.com",
+      // },
       friendIsFavorite: this.isFavorite,  // 부모에서온 isFavorite을 사용하려면 초기값을 이용한다.
     };
   },
@@ -77,11 +77,16 @@ export default {
       /**
        * 변경하기 위해 friendIsFavorite 로 변경
        */
-      if(this.friendIsFavorite === '1'){
-        this.friendIsFavorite = '0';
-      } else {
-        this.friendIsFavorite = '1';
-      }
+      // if(this.friendIsFavorite === '1'){
+      //   this.friendIsFavorite = '0';
+      // } else {
+      //   this.friendIsFavorite = '1';
+      // }
+
+      /**
+       * boolean으로 변경되면서..
+       */
+      this.friendIsFavorite = !this.friendIsFavorite;
     }
   }
 };

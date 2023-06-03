@@ -5,17 +5,19 @@
     </header>
     <ul>
       <friend-contact
-          name="ManuelLorenz"
-          phone-number="01234 78992"
-          email-address="manuel@locahlsto.com"
-          is-favorite="1"
+          v-for="friend in friends"
+          :key="friend.id"
+          :name="friend.name"
+          :phone-number="friend.phone"
+          :email-address="friend.email"
+          :is-favorite="true"
       ></friend-contact>
-      <friend-contact
-          name="Julite Jones"
-          phone-number="0987 6554321"
-          email-address="julie@locahlsto.com"
-          is-favorite="0"
-      ></friend-contact>
+<!--      <friend-contact-->
+<!--          name="Julite Jones"-->
+<!--          phone-number="0987 6554321"-->
+<!--          email-address="julie@locahlsto.com"-->
+<!--          is-favorite="false"-->
+<!--      ></friend-contact>-->
     </ul>
   </section>
 </template>
