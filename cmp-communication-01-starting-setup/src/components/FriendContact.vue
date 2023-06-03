@@ -53,6 +53,20 @@ export default {
       // }
     }
   },
+  emits:
+      ['toggle-favorite'], //  배열로 정의할 수 있다. 컴포넌트 커스텀 이벤트를 명시함으로써 다른 개발자가 봐도 쉽게 emit이벤트를 알 수 있다.
+
+      //객체로 정의하기
+      // {
+      //   'toggle-favorite': function(id) {
+      //     if(id){
+      //       return true
+      //     } else {
+      //       console.warn('id is missing');
+      //       return false;
+      //     }
+      //   }
+      // },
   data() {
     return {
       detailsAreVisible: false,
