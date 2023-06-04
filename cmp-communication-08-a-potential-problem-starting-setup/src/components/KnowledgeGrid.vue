@@ -13,7 +13,12 @@
 
 <script>
 export default {
-  props: ['topics'],
-  emits: ['select-topic']
+  // props: ['topics'],
+
+  /**
+   * 부모 컴포넌트 App.vue 에서 전달한 topics를 반환받는다.
+   */
+  inject: ['topics'],
+  // emits: ['select-topic']
 };
 </script>
