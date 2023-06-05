@@ -1,9 +1,9 @@
 <template>
   <section>
     <base-card>
-      <template v-slot:header>
-        <h2>Available Badges</h2>
-      </template>
+<!--      <template v-slot:header>-->
+<!--        <h2>Available Badges</h2>-->
+<!--      </template>-->
 <!--      기본 슬롯을 default로 명시할 수 있다.-->
       <template v-slot:default>
         <ul>

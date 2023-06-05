@@ -3,6 +3,8 @@
     <base-card>
 <!--      base-card라는 컴포넌트에  <slot name="header"></slot> 형식으로 들어가 있을때 v-slot을 이용핸다.-->
       <template v-slot:header>
+<!--        #header로 표현해도 v-slot과 같다.-->
+<!--      <template #header>-->
         <h3>{{ fullName }}</h3>
         <base-badge :type="role" :caption="role.toUpperCase()"></base-badge>
       </template>
