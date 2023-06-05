@@ -22,7 +22,10 @@
 <!--    <manage-goals v-if="selectedComponent === 'manage-goals'"></manage-goals>-->
 
 <!--    is는 정의한 컴포넌트 중 어떤 컴포넌트를 보여줄지 알려준다.-->
-    <component :is="selectedComponent"></component>
+<!--    keep-alive 사용시 컴포넌트를 동적변경해도 input 값이 사라지지 않는다.-->
+    <keep-alive>
+      <component :is="selectedComponent"></component>
+    </keep-alive>
 
   </div>
 </template>
