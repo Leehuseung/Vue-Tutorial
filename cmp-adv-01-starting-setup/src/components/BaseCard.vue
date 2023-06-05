@@ -2,6 +2,11 @@
   <div>
 <!--    props는 html로 넘어올 때 해결책이 되지 않는다.?-->
 <!--    {{content}}-->
+
+    <header>
+      <slot name="header"></slot>
+    </header>
+<!--    이름 없는 slot은 하나만 가능함.-->
     <slot></slot>
   </div>
 </template>
