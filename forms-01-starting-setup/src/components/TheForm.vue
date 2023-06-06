@@ -11,7 +11,7 @@
     </div>
     <div class="form-control">
       <label for="referrer">How did you hear about us?</label>
-      <select id="referrer" name="referrer">
+      <select id="referrer" name="referrer" v-model="referrer">
         <option value="google">Google</option>
         <option value="wom">Word of mouth</option>
         <option value="newspaper">Newspaper</option>
@@ -59,6 +59,7 @@ export default {
     return {
       userName: '',
       userAge: null,
+      referrer: 'google', //option의 value 값을 선택한다.
     };
   },
   methods: {
@@ -72,6 +73,7 @@ export default {
       //ref 사용시 type이 스트링으로 들어가게 된다.
       console.log(this.$refs.ageInput.value + 5); // 문자열로 더해짐.
       console.log(typeof this.$refs.ageInput.value);
+      this.userAge = null;
     }
   }
 }
