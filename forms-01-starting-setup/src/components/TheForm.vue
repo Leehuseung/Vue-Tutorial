@@ -6,7 +6,8 @@
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
-      <input id="age" name="age" type="number" />
+<!--      v-model 사용시 자동으로 숫자로 변경됨.-->
+      <input id="age" name="age" type="number" v-model="userAge" ref="ageInput"/>
     </div>
     <div class="form-control">
       <label for="referrer">How did you hear about us?</label>
@@ -57,12 +58,20 @@ export default {
   data() {
     return {
       userName: '',
+      userAge: null,
     };
   },
   methods: {
     submitForm(){
       console.log('usernmae: ' +  this.userName);
       this.userName = '';
+      console.log('UserAge:');
+      console.log(typeof this.userAge);
+      console.log(31 + 5);
+      console.log(typeof 31);
+      //ref 사용시 type이 스트링으로 들어가게 된다.
+      console.log(this.$refs.ageInput.value + 5); // 문자열로 더해짐.
+      console.log(typeof this.$refs.ageInput.value);
     }
   }
 }
