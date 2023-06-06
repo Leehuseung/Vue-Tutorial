@@ -52,6 +52,8 @@
     </div>
     <div class="form-control">
       <rating-control v-model="rating"></rating-control>
+<!--      v-model은 다음처럼 쓰는것과 같다. -->
+<!--      <rating-control v-model="rating" :model-value="" @update:modelValue=""></rating-control>-->
     </div>
     <div class="form-control">
       <!--        name속성이 같을경우 data 변수에 배열로 생긴다. 한개면 true/false-->
