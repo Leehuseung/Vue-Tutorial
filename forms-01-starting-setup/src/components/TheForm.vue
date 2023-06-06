@@ -20,32 +20,39 @@
     <div class="form-control">
       <h2>What are you interested in?</h2>
       <div>
-        <input id="interest-news" name="interest" type="checkbox" />
+<!--        value가 없을경우 checkbox 해제시 전부 해제됨-->
+<!--        name속성이 같을경우 data 변수에 배열로 생긴다. 한개면 true/false-->
+        <input id="interest-news" name="interest" type="checkbox" value="news" v-model="interest"/>
         <label for="interest-news">News</label>
       </div>
       <div>
-        <input id="interest-tutorials" name="interest" type="checkbox" />
+        <input id="interest-tutorials" name="interest" type="checkbox" value="tutorials"  v-model="interest"/>
         <label for="interest-tutorials">Tutorials</label>
       </div>
       <div>
-        <input id="interest-nothing" name="interest" type="checkbox" />
+        <input id="interest-nothing" name="interest" type="checkbox" value="nothing"  v-model="interest"/>
         <label for="interest-nothing">Nothing</label>
       </div>
     </div>
     <div class="form-control">
       <h2>How do you learn?</h2>
       <div>
-        <input id="how-video" name="how" type="radio" />
+        <input id="how-video" name="how" type="radio" v-model="how" value="video"/>
         <label for="how-video">Video Courses</label>
       </div>
       <div>
-        <input id="how-blogs" name="how" type="radio" />
+        <input id="how-blogs" name="how" type="radio" v-model="how" value="blogs"/>
         <label for="how-blogs">Blogs</label>
       </div>
       <div>
-        <input id="how-other" name="how" type="radio" />
+        <input id="how-other" name="how" type="radio" v-model="how" value="other"/>
         <label for="how-other">Other</label>
       </div>
+    </div>
+    <div class="form-control">
+      <!--        name속성이 같을경우 data 변수에 배열로 생긴다. 한개면 true/false-->
+        <input type="checkbox" id="confirm-terms" name="confirm-terms" v-model="confirm"/>
+        <label for="confirm-terms">Agree to terms of use?</label>
     </div>
     <div>
       <button>Save Data</button>
@@ -60,6 +67,9 @@ export default {
       userName: '',
       userAge: null,
       referrer: 'google', //option의 value 값을 선택한다.
+      interest: [], //기본값을 null 로 할경우에 한개만 선택해도 모두 선택됨.
+      how: null,
+      confirm: false,
     };
   },
   methods: {
@@ -74,6 +84,17 @@ export default {
       console.log(this.$refs.ageInput.value + 5); // 문자열로 더해짐.
       console.log(typeof this.$refs.ageInput.value);
       this.userAge = null;
+
+      console.log('Checkboxes');
+      console.log(this.interest);
+      console.log('Radio buttons');
+      console.log(this.how);
+      this.interest = [];
+      this.how = null;
+
+      console.log('confirm')
+      console.log(this.confirm);
+      this.confirm=false;
     }
   }
 }
