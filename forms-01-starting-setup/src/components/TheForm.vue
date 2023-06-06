@@ -51,7 +51,7 @@
       </div>
     </div>
     <div class="form-control">
-      <rating-control></rating-control>
+      <rating-control v-model="rating"></rating-control>
     </div>
     <div class="form-control">
       <!--        name속성이 같을경우 data 변수에 배열로 생긴다. 한개면 true/false-->
@@ -77,6 +77,7 @@ export default {
       interest: [], //기본값을 null 로 할경우에 한개만 선택해도 모두 선택됨.
       how: null,
       confirm: false,
+      rating: null,
       userNameValidity: 'pending',
     };
   },
@@ -103,6 +104,11 @@ export default {
       console.log('confirm')
       console.log(this.confirm);
       this.confirm=false;
+
+      console.log('rating');
+      console.log(this.rating);
+      this.rating = null;
+
     },
     validateInput() {
       if (this.userName === '') {
