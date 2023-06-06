@@ -51,6 +51,9 @@
       </div>
     </div>
     <div class="form-control">
+      <rating-control></rating-control>
+    </div>
+    <div class="form-control">
       <!--        name속성이 같을경우 data 변수에 배열로 생긴다. 한개면 true/false-->
         <input type="checkbox" id="confirm-terms" name="confirm-terms" v-model="confirm"/>
         <label for="confirm-terms">Agree to terms of use?</label>
@@ -62,7 +65,10 @@
 </template>
 
 <script>
+import RatingControl from "@/components/RatingControl.vue";
+
 export default {
+  components: {RatingControl},
   data() {
     return {
       userName: '',
